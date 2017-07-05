@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>map</title>
+	<link rel="stylesheet" type="text/css" href="css/index.css">
+	<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+	<link rel="stylesheet" href="css/bootstrap-datetimepicker.min.css">
+	<link rel="stylesheet" href="css/jquery.dataTables.min.css">
+	<link rel="stylesheet" href="css/font-awesome.min.css">
+	<link rel="stylesheet" href="css/ol.css">
+</head>
+<body>
+	<!-- 左侧菜单栏 -->
+	<div class="map_menu">
+		<div class="map_menu_title">
+			<p>基站和热点系统</p>
+		</div>
+	<!-- ******************bootstrap的collapse菜单***************** -->
+	    <div class="map_menu_box">
+			<div class="panel-group" id="accordion">
+				<!-- ************地图************** -->
+				<div class="panel panel-default">
+					<div class="panel-heading" style="padding: 0;">
+            			<h4 class="panel-title">
+							<a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">
+								<p class="menu-one">
+									<img src="images/map.png" class="menu-icon">
+									地图
+									<span class="caret" style="color:#ff5700;margin-left:80px"></span>
+								</p>
+							</a>
+						</h4>
+					</div>
+					<div id="collapseOne" class="panel-collapse collapse">
+						<div class="panel-body" style="padding:4px;">
+							<!-- 折叠菜单二级 -->
+							<div class="panel-group" id="map-wifi" style="margin-bottom:0">
+								<!--热点:热力图和麻点图 -->
+								<div class="panel panel-default" style="border:none;">
+									<div class="panel-heading menu-second">
+										<h5 class="panel-title">
+											<a href="#wifi" data-toggle="collapse" data-parent="#map-wifi">
+												<img src="images/wifi.png" class="menu-icon">
+												热点
+											</a>
+										</h5>
+									</div>
+									<div id="wifi" class="panel-collapse collapse collapse_2">
+										<div class="panel-body body-time">
+											<li class="list-group-item menu-third">
+												<a href="#" data-role = "wifi-heatmap">
+													<img src="images/heatmap-icon.png" class="menu-icon">热力图
+												</a>
+											</li>
+											<li class="list-group-item menu-third">
+												<a href="#" data-role = "wifi-marker">
+													<img src="images/marker-icon.png" class="menu-icon">麻点图
+												</a>
+											</li>
+										</div>
+									</div>
+								</div>
+								<!-- 基站：热力图和麻点图 -->
+								<div class="panel panel-default" style="border:none;">
+									<div class="panel-heading menu-second">
+										<h5 class="panel-title">
+											<a href="#station" data-toggle="collapse" data-parent="#map-wifi">
+												<img src="images/base-station-icon.png" class="menu-icon">
+												基站
+											</a>
+										</h5>
+									</div>
+									<div id="station" class="panel-collapse collapse collapse_2">
+										<div class="panel-body body-time">
+											<li class="list-group-item menu-third">
+												<a href="#" data-role = "station-heatmap">
+													<img src="images/heatmap-icon.png" class="menu-icon">热力图
+												</a>
+											</li>
+											<li class="list-group-item menu-third">
+												<a href="#" data-role = "station-marker">
+													<img src="images/marker-icon.png" class="menu-icon">麻点图
+												</a>
+											</li>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!-- ***********基站搜索 ***********-->
+				<div class="panel panel-default">
+					<div class="panel-heading" style="padding: 0">
+						<h4 class="panel-title">
+							<a href="#collapseTwo" data-toggle="collapse" data-parent="#accordion">
+								<p class="menu-one">
+									<img src="images/search.png" class="menu-icon">
+									基站搜索
+									<span class="caret" style="color:#ff5700;margin-left:49px"></span>
+								</p>
+							</a>
+						</h4>
+					</div>
+					<div id="collapseTwo" class="panel-collapse collapse">
+							<!-- **********折叠二级菜单*********** -->
+						<div class="panel-body" style="padding: 4px;">
+							<div class="panel-group" id="search-list" style="margin-bottom:0">
+								<!-- 最近发现的基站 -->
+								<div class="panel panel-default" style="border:none;">
+								<div class="panel-heading menu-second">
+									<h5 class="panel-title">
+										<a href="#" data-toggle="collapse" data-parent="#search-list" id="st_one">
+											<img src="images/lately-base-station.png" class="menu-icon">
+											最近发现的基站
+										</a>
+									</h5>
+								</div>
+								</div>
+								<!-- 固定时间段的基站 -->
+								<div class="panel panel-default" style="border:none;">
+									<div class="panel-heading menu-second">
+										<h5 class="panel-title">
+											<a href="#station-a-week-data" data-toggle="collapse" data-parent="#search-list">
+												<img src="images/a-week-statons.png" class="menu-icon">
+												固定时间段的基站
+											</a>	
+										</h5>
+									</div>
+									<div class="panel-collapse collapse" id="station-a-week-data">
+										<div class="panel-body body-time">
+											<!-- 选择时间时间段 -->
+											<!-- 开始 -->
+											<div class="form-group lable-font group-time">
+												<label for="date_from" class="sr-only"></label>
+												<div class="input-group date form_date" data-link-field = "date_from" data-link-format="yyyy-mm-dd">
+													<input type="text" class="form-control" size="14" value="">
+													<span class="input-group-addon">
+														<i class="fa fa-calendar"></i>			
+													</span>			
+												</div>
+												<input type="hidden" id="date_from" value="">
+												<br/>
+											</div>
+											<!-- 结束 -->
+											<div class="form-group lable-font group-time">
+												<label for="date_to" class="sr-only"></label>
+												<div class="input-group date form_date" data-link-field = "date_to" data-link-format="yyyy-mm-dd">
+													<input type="text" class="form-control" size="14" value="">
+													<span class="input-group-addon">
+														<i class="fa fa-calendar"></i>			
+													</span>			
+												</div>
+												<input type="hidden" id="date_to" value="">
+												<br/>
+											</div>
+											<!-- 显示按钮 -->
+											<button class="btn btn-default btn-sm" id="st_two">
+												&nbsp;<i class="fa fa-search"></i>
+												&nbsp;&nbsp;显示&nbsp;
+											</button>
+										</div>
+									</div>
+								</div>
+								<!-- LAC-CI搜索 -->
+								<div class="panel panel-default" style="border:none;">
+									<div class="panel-heading menu-second">
+										<h5 class="panel-title">
+											<a href="#lac-ci-body" data-toggle="collapse" data-parent="#search-list">
+												<img src="images/LAC-CI-icon.png" class="menu-icon">
+												LAC-CI
+											</a>	
+										</h5>
+									</div>
+									<div class="panel-collapse collapse" id="lac-ci-body">
+										<div class="panel-body body-time">
+											<div class="from-group lable-font">
+												<label for="lac-ci-searchbox" class="sr-only">lac-ci</label>
+												<div class="input-group" style="margin-top: 13px">
+													<input type="text" class="form-control" id="lac-searchbox" placeholder="LAC"  style="width:50px;border-radius: 0;">
+                      								<span class="input-group-addon" style="width: 12px;border: none;padding: 0;background: #F5F5F5;">-</span>
+                          							<input type="text" class="form-control" id="ci-searchbox" placeholder="CI" style="border-radius: 0;">
+
+												</div>
+											</div>
+											<button class="btn btn-default btn-sm" id="Mybtn">
+												&nbsp;<i class="fa fa-search"></i>
+												&nbsp;&nbsp;显示&nbsp;
+											</button>
+										</div>
+									</div>
+								</div>
+								<!-- 指定区域的基站 -->
+								<div class="panel panel-default" style="border:none;">
+									<div class="panel-heading menu-second">
+										<h5 class="panel-title">
+											<a href="#area-body" data-toggle="collapse" data-parent="#search-list">
+												<img src="images/area.png" class="menu-icon">
+												指定区域的基站
+											</a>	
+										</h5>
+									</div>
+									<div class="panel-collapse collapse" id="area-body">
+										<div class="panel-body body-time">
+											<select id="s_province" name="s_province" class="ellipsis" ><select>
+                   							<select id="s_city" name="s_city" class="ellipsis"><select>
+                   							<select id="s_county" name="s_county" class="ellipsis"><select>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!-- ***********信息数据************ -->
+				<div class="panel panel-default">
+					<div class="panel-heading" style="padding: 0">
+						<h4 class="panel-title">
+							<a href="#collapseThree" data-toggle="collapse" data-parent="#accordion">
+								<p class="menu-one" id="mesg">
+									<img src="images/data.png" class="menu-icon">
+									信息数据
+									<span class="caret" style="color:#ff5700;margin-left:49px"></span>
+								</p>
+							</a>
+						</h4>
+					</div>
+					<div id="collapseThree" class="panel-collapse collapse">
+							<!-- **********折叠二级菜单*********** -->
+						<div class="panel-body" style="padding: 4px;">
+							<div class="panel-group" id="info-list" style="margin-bottom:0">
+								<!-- 数据统计 -->
+								<div class="panel panel-default" style="border:none;">
+								<div class="panel-heading menu-second">
+									<h5 class="panel-title">
+										<a href="#" data-toggle="collapse" data-parent="#info-list" id="statistic_open">
+											<img src="images/lately-base-station.png" class="menu-icon">
+											数据统计
+										</a>
+									</h5>
+								</div>
+								</div>
+								<!-- 全国态势图 -->
+								<div class="panel panel-default" style="border:none;">
+									<div class="panel-heading menu-second">
+										<h5 class="panel-title">
+											<a href="#markermap-body" data-toggle="collapse" data-parent="#info-list">
+												<img src="images/download.png" class="menu-icon">
+												全国态势图
+											</a>	
+										</h5>
+									</div>
+									<div class="panel-collapse collapse" id="markermap-body">
+										<div class="panel-body body-time">
+											<!--态势图选择：类型-->
+											<div class="form-group group-select">
+												<label for="markermap-kinds" class="col-sm-3 control-label label-select">类型</label>
+												<div class="col-sm-9" style="padding: 0 0 0 22px;">
+													<select id="markermap-kinds" class="form-control">
+														<option>热点</option>
+														<option>基站</option>
+													</select>
+												</div>
+											</div>
+											<!--态势图选择：运营商-->
+											<div class="form-group group-select">
+												<label for="markermap-carries" class="col-sm-3 control-label label-select">运营商</label>
+												<div class="col-sm-9" style="padding: 0 0 0 22px;">
+													<select id="markermap-carries" class="form-control">
+														<option>不限</option>
+														<option>移动</option>
+														<option>联通</option>
+														<option>电信</option>
+													</select>
+												</div>
+											</div>
+											<!-- 显示按钮 -->
+											<button class="btn btn-default btn-sm">
+												&nbsp;<i class="fa fa-search"></i>
+												&nbsp;&nbsp;
+												<a id="trend">显示</a>
+												&nbsp;
+											</button>
+										</div>
+									</div>
+								</div>
+								<!-- 数据下载 -->
+								<div class="panel panel-default" style="border:none;">
+									<div class="panel-heading menu-second">
+										<h5 class="panel-title">
+											<a href="#database-body" data-toggle="collapse" data-parent="#info-list">
+												<img src="images/download.png" class="menu-icon">
+												数据下载
+											</a>	
+										</h5>
+									</div>
+									<div class="panel-collapse collapse" id="database-body">
+										<div class="panel-body body-time">
+											<!--数据下载选择：类型-->
+											<div class="form-group group-select">
+												<label for="database-kinds" class="col-sm-3 control-label label-select">类型</label>
+												<div class="col-sm-9" style="padding: 0 0 0 22px;">
+													<select id="database-kinds" class="form-control">
+														<option>热点</option>
+														<option>基站</option>
+													</select>
+												</div>
+											</div>
+											<!--数据下载选择：运营商-->
+											<div class="form-group group-select">
+												<label for="database-carries" class="col-sm-3 control-label label-select">运营商</label>
+												<div class="col-sm-9" style="padding: 0 0 0 22px;">
+													<select id="database-carries" class="form-control">
+														<option>不限</option>
+														<option>移动</option>
+														<option>联通</option>
+														<option>电信</option>
+													</select>
+												</div>
+											</div>
+											<!-- 数据下载时间段选择 -->
+											<!-- 开始 -->
+											<div class="form-group lable-font group-time">
+												<label for="date_from2" class="sr-only"></label>
+												<div class="input-group date form_date" data-link-field = "date_from2" data-link-format="yyyy-mm-dd">
+													<input type="text" class="form-control" size="14" value="">
+													<span class="input-group-addon">
+														<i class="fa fa-calendar"></i>			
+													</span>			
+												</div>
+												<input type="hidden" id="date_from2" value="">
+												<br/>
+											</div>
+											<!-- 结束 -->
+											<div class="form-group lable-font group-time">
+												<label for="date_to2" class="sr-only"></label>
+												<div class="input-group date form_date" data-link-field = "date_to2" data-link-format="yyyy-mm-dd">
+													<input type="text" class="form-control" size="14" value="">
+													<span class="input-group-addon">
+														<i class="fa fa-calendar"></i>			
+													</span>			
+												</div>
+												<input type="hidden" id="date_to2" value="">
+												<br/>
+											</div>
+											<!-- 下载按钮 -->
+											<a class="btn btn-default btn-sm" id="download-data" href="" download="file">
+												&nbsp;<i class="fa fa-search"></i>
+												&nbsp;&nbsp;下载&nbsp;
+											</a>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- 地图容器 -->
+	<div class="map_body">
+		<div class="myMap">
+    		<div id="container" class="map-content"></div>
+    		<div id="popup" class="ol-popup">
+      			<a href="#" id="popup-closer" class="ol-popup-closer"></a>
+      			<div id="popup-content"></div>
+    		</div>
+    		<div class="statistic-map" id="statistic-map"></div>
+			<div class="MySwitch">
+  				<input id="TheCheckBox" type="checkbox" checked="false" class="switch">
+			</div>
+ 		    <select  id="select-address" style="outline: none;border-radius: 10px;">
+     			<option>北京市</option>
+     			<option class="disabled">天津市</option>
+     			<option class="disabled">上海市</option>
+     			<!-- <option class="disabled">新疆</option> -->
+    		</select>
+    		<!-- 城市搜索输入框 -->
+    		<div class="input-group search-box">
+      				<input type="text" class="form-control search-content search-input" placeholder="输入：北京市 or LAC-CI "  id="c_search">
+			</div>
+			<canvas id="usefor-download-canvas" ></canvas>
+			<button class="download-btn btn btn-default" id="download-btn">
+				 <i class="fa fa-cloud-download"></i>
+    		</button>
+    		<!-- 表格信息 -->
+    		 <div class="container" id="station-info">
+      			<table id="example" class="display" cellspacing="0" width="100%">
+        			<thead>
+          				<tr>
+          				  <th>详细地址信息</th>
+          				  <th>使用量</th>
+          				  <th>发现时间</th>
+          				  <th>新增</th>
+          				  <th>uli</th>
+          				  <th></th>
+          				</tr>
+        			</thead>
+      			</table>
+    		</div>
+    		<button style="position:absolute;top:10px;left:230px;width:72px;height:32px;padding:5px 10px;font-size:12px;line-height:1.5;border-radius:3px;display:none;z-index:100" id="btn-back">返回列表
+    		</button>
+    	</div>
+	</div>
+</body>
+	<script data-main="js/main" src="js/lib/require.js"></script>
+</html>

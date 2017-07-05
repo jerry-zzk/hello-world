@@ -1,0 +1,202 @@
+html,body{width: 100% !important;height: 100% !important;
+	 font-family: "Myriad", Vegur, "Trebuchet MS", Arial, Helvetica, sans-serif;
+   	 font-size: 12px; border:none; margin:0; padding: 0; background: #fff;}
+a{text-decoration:none;}
+a .menu-icon{float:left;}
+.map_menu{position: absolute; left: 0; top:0; width: 199px; height: 100%; background:#f5f4f3;
+	 border-right:1px solid #ddd; z-index:10;}
+.map_menu_title{position:fixed; top:0; left: 0; width:212px; height:58px;
+	 padding:10px 16px 6px 22px; background:url("../images/header.png") no-repeat;
+	 font-family: "Microsoft YaHei"; font-size:18px; color:#fff; word-spacing: 25px;
+	 letter-spacing:4px; text-shadow: #333 0px 1px 2px;}
+	 /* --------------------折叠菜单------------------------- */
+.map_menu_box{position:absolute; top: 0;left: 0; width: 200px; margin-top:57px;
+	 height:auto;}
+#accordion{float:left; width: 100%;height: 100%; 
+	overflow:hidden; background-image:linear-gradient(#f9f9f9,#eee);}
+.panpel-default{border: none;}
+.menu-one{width: 200px;height: 36px;padding: 3px 0px; line-height:30px; margin-bottom:0px; 
+	padding-left:12px; border:1px solid rgba(255,193,91,.15);
+	box-shadow: rgba(255,255,255,.25) 0px 1px 0px,
+				inset rgba(255,255,255,.25) 0px 1px 0px,
+				inset rgba(253,249,189,.25) 0px 0px 0px,
+				inset rgba(255,255,255,.4) 0px 20px 0px,
+				inset rgba(253,249,189,.42) 0px -20px 0px,
+				inset rgba(255,255,255,0.05) 0px 20px 20px;
+	transition: all 0.1s linear;
+	background: #eae9e5;
+			}
+.menu-one:hover{border:1px solid rgba(255,249,189);
+	box-shadow: rgba(255,255,255,.25) 0px 1px 0px,
+				inset rgba(255,255,255,.25) 0px 1px 0px,
+				inset rgba(253,249,189,.25) 0px 0px 0px,
+				inset rgba(255,255,255,.4) 0px 20px 0px,
+				inset rgba(253,249,189,.42) 0px -20px 0px,
+				inset rgba(255,255,255,0.05) 0px 20px 20px;
+	background: #FEFCAC;}	
+.body-time{
+	padding: 10px 15px; box-shadow: inset 0px 1px rgba(118,128,128,.3);
+	border:1px solid rgba(128,128,113,.3); 
+	background: rgba(204,204,204,.15); border-radius: 5px; margin: 5px;
+	}
+.menu-second{font-size: 12px !important; white-space:nowrap; width: 184px; height: 32px;
+	line-height:32px; box-shadow:0 0 1px 1px #e2dcd4; margin:0 3px 0 3px;}
+.menu-second img{width: 22px; margin-left: -8px; margin-right: 6px; margin-top: -5px;
+	 text-align:center;}
+.menu-third{color: #666; font-size: 11px; white-space: nowrap; line-height: 17px;
+	 margin-bottom:3px !important; border:1px solid rgba(204,204,204,.86); background: rgb(243,243,243) !important;
+	 padding: 7px 0 7px 20px}
+.menu-third img{width: 20px; margin-left: -12px; margin-right: 9px; margin-top: -1px;
+	 text-align:center;}
+a .menu-second:hover,a .menu-third:hover{box-shadow: 0 0 2px 2px #08c; border:none;}
+/*------------选择日期控件------------*/
+.lable-font{font-size:12px;}
+.group-time{margin: 0; height: 32px;}
+.form-control{height: 30px; padding: 5px 9px; font-size: 12px; line-height: 20px; text-align: left;
+	}
+
+#Mybtn{margin-left: 68px; margin-top: 8px;}
+
+/*城市三节联动*/
+.ellipsis{height: 25px; width: 151px; line-height:25px; margin:2px 0px; text-overflow:ellipsis;}
+
+/*信息数据*/
+.group-select{margin: 0; height: 32px; line-height: 32px;}
+.control-label{padding-top: 0;}
+.label-select{padding: 0 1px;  margin:0; white-space:nowrap;}
+
+/*地图容器*/
+.map_body {
+  position: relative;
+  float: right;
+  width: 100%;
+  height: 100%;
+  background-image:linear-gradient( #f9f9f9,#eee );
+  border:none;
+}
+.myMap{margin-left: 200px; height: 100%;}
+.map-content{
+  height: 100%;
+  width: 100%;
+}
+
+.ol-popup {
+    position: absolute;
+    bottom: 12px;
+    left: -50px;
+    min-width: 280px;
+    padding: 15px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    background-color: white;
+    -webkit-filter: drop-shadow(0 1px 4px rgba(0,0,0,.2));
+    filter: drop-shadow(0 1px 4px rgba(0,0,0,.2));
+}
+.ol-popup:after, .ol-popup:before {
+    position: absolute;
+    top: 100%;
+    width: 0;
+    height: 0;
+    content: ' ';
+    pointer-events: none;
+    border: solid transparent;
+}
+.ol-popup:after {
+    left: 48px;
+    margin-left: -10px;
+    border-width: 10px;
+    border-top-color: white;
+}
+.ol-popup:before {
+    left: 48px;
+    margin-left: -11px;
+    border-width: 11px;
+    border-top-color: #ccc;
+}
+.ol-popup-closer {
+    position: absolute;
+    top: 2px;
+    right: 8px;
+    text-decoration: none;
+}
+.ol-popup-closer:after {
+    content: '✖';
+}
+#statistic-map{
+  width: 100%;
+  height: 100%;
+  padding:5px;
+  display: none;
+}
+
+.MySwitch{
+  position: absolute;
+  top: 17px;
+  left: 21px;
+  display-:none;
+  z-index:6;
+}
+#select-address{
+  position: absolute;
+  top: 15px;
+  right: 231px;
+  width: 67px;
+  height: 30px;
+  background: #FFC15B;
+  font-size: 14px;
+  font-weight: bold;
+  color: white;
+  border: none;
+}
+.search-box{
+  position: absolute !important;
+  top: 0px;
+  right: 3px;
+  width: 227px;
+  height: 30px;
+  background: none repeat scroll 0 0 rgba(255, 251, 172, 0.75);
+  border-radius: 7px;
+  margin: 10px 0 0 0;
+  padding: 5px;
+}
+.search-input{
+  width: 100%;
+  height: 28px;
+  padding: 0;
+  text-indent: 8px;
+  background: rgba(246, 243, 238, 0.55);
+}
+#usefor-download-canvas{
+  padding:0px;
+  margin:0px;
+  position: absolute;
+  top: 0px;
+  left: 20px;
+  width: 0px;
+  height:0px;
+  /*display:none;*/
+}
+.myMap .download-btn{
+  position:absolute;
+  top:13px;
+  right:34px;
+  display:none;
+}    
+
+#station-info{
+  display: none;
+  height: 100%;
+}
+
+#container{
+  width: 100%;
+  height: 100%;
+}
+
+td.details-control {
+  background: url('../images/details_open.png') no-repeat center center;
+  cursor: pointer;
+}
+tr.shown td.details-control{
+  background: url('../images/details_close.png') no-repeat center center;
+}   
